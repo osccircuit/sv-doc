@@ -34,7 +34,7 @@ class TagBasedCommentParser:
                 builder.add(tag.name, parsed)
             section = builder.build()
             if section is not None:
-                section.append(section)
+                sections.append(section)
         return Documentation(sections)
 
     def try_parse(self, pattern, string):
