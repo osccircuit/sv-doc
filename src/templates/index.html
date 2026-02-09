@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% for section in sections %}
+  <h2>Name: {{ section.name }}</h2>
+  <b>Description: </b>{{ section.description }}
+  <br>
+  {% endfor %}
+{% endblock %}
