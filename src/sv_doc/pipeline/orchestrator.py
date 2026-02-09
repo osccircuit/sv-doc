@@ -18,5 +18,9 @@ class DocumentationPipeline:
 
     def run(self, source_paths: Iterable[Path], output_dir: Path) -> None:
         """Execute the end-to-end documentation pipeline."""
-
-        raise NotImplementedError
+        src_paths = [Path("../test.sv")]
+        print(src_paths)
+        comment_blocks = self.extractor.extract(src_paths)
+        documentation = self.parser.parse(comment_blocks)
+        render_doc = self.renderer.render(documentation)
+        self.writer.write(render_doc, Path("../test.html"))
