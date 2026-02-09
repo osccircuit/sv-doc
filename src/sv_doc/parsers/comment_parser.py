@@ -4,9 +4,8 @@ from typing import Iterable
 from dataclasses import dataclass
 import re
 
-from sv_doc.interfaces import CommentParser
 from sv_doc.models.comment import CommentBlock
-from sv_doc.models.document import Documentation
+from sv_doc.models.document import Documentation, BuilderSection
 
 
 @dataclass
@@ -27,7 +26,7 @@ class TagBasedCommentParser:
         self.type_section = type_section
 
     def parse(self, blocks: Iterable[CommentBlock]) -> Documentation:
-        sections: list[self.type_section] = []
+        sections: list[type] = []
         for block in blocks:
             builder = BuilderSection(self.type_section)
             for tag in self.TAGS:
